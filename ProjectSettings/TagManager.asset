@@ -26,8 +26,8 @@ TagManager:
   - Obstacle
   - Player
   - Overlay
-  - 
-  - 
+  - Npc
+  - Npcmove
   - 
   - 
   - 
