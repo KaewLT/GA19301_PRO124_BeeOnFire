@@ -297,57 +297,56 @@ namespace Pathfinding
             agent.isStopped = true;
             Invoke("AllowToProceed", waitTime); // Allow the car to proceed after wait time
         }
-        void OnCollisionEnter2D(Collision2D collision)
-        {
-            if (collision.gameObject.CompareTag("Player"))
-            {
-                ApplyKnockback(collision);
-            }
-        }
-        void ApplyKnockback(Collision2D collision)
-        {
-            Vector2 knockbackDirection = (rb.position - collision.rigidbody.position).normalized;
-            rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+        //void OnCollisionEnter2D(Collision2D collision)
+        //{
+        //    if (collision.gameObject.CompareTag("Player"))
+        //    {
+        //        ApplyKnockback(collision);
+        //    }
+        //}
+        //void ApplyKnockback(Collision2D collision)
+        //{
+        //    Vector2 knockbackDirection = (rb.position - collision.rigidbody.position).normalized;
+        //    rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
 
-            // Also apply knockback to the other car/player
-            Rigidbody2D otherRb = collision.rigidbody;
-            if (otherRb != null)
-            {
-                otherRb.AddForce(-knockbackDirection * knockbackForce, ForceMode2D.Impulse);
-            }
-        }
-        private bool IsPlayer(GameObject obj)
-        {
-            // Check if the object has a Player tag or is in the playerLayer
-            return obj.CompareTag("Player") || (playerLayer == (playerLayer | (1 << obj.layer)));
-        }
-
+        //    // Also apply knockback to the other car/player
+        //    Rigidbody2D otherRb = collision.rigidbody;
+        //    if (otherRb != null)
+        //    {
+        //        otherRb.AddForce(-knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+        //    }
+        //}
+        //private bool IsPlayer(GameObject obj)
+        //{
+        //    // Check if the object has a Player tag or is in the playerLayer
+        //    return obj.CompareTag("Player") || (playerLayer == (playerLayer | (1 << obj.layer)));
+        //}
     }
 }
-    
-    [System.Serializable]
-    public class CarColliderConfig
-    {
-        [SerializeField] public Vector2 size;
-        [SerializeField] public Vector2 offset;
-    }
 
-    [System.Serializable]
-    public class SpriteSet
-    {
-        [SerializeField] public Sprite leftSprite;
-        [SerializeField] public Sprite rightSprite;
-        [SerializeField] public Sprite upSprite;
-        [SerializeField] public Sprite downSprite;
-    }
+[System.Serializable]
+public class CarColliderConfig
+{
+    [SerializeField] public Vector2 size;
+    [SerializeField] public Vector2 offset;
+}
 
-    [System.Serializable]
-    public class AnimationSet
-    {
-        [SerializeField] public AnimationClip leftClip;
-        [SerializeField] public AnimationClip rightClip;
-        [SerializeField] public AnimationClip upClip;
-        [SerializeField] public AnimationClip downClip;
-    }
+[System.Serializable]
+public class SpriteSet
+{
+    [SerializeField] public Sprite leftSprite;
+    [SerializeField] public Sprite rightSprite;
+    [SerializeField] public Sprite upSprite;
+    [SerializeField] public Sprite downSprite;
+}
+
+[System.Serializable]
+public class AnimationSet
+{
+    [SerializeField] public AnimationClip leftClip;
+    [SerializeField] public AnimationClip rightClip;
+    [SerializeField] public AnimationClip upClip;
+    [SerializeField] public AnimationClip downClip;
+}
 
 
