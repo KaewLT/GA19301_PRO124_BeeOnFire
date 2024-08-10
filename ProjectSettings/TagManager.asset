@@ -14,6 +14,7 @@ TagManager:
   - Door
   - Slot
   - Book
+  - Portal
   layers:
   - Default
   - TransparentFX
