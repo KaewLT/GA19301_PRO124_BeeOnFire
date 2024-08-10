@@ -51,7 +51,6 @@ public class AiController : MonoBehaviour
         else
         {
             Debug.LogError("Có lỗi xảy ra khi tính toán đường đi: " + p.errorLog);
-            return;
         }
     }
 
