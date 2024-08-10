@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -38,7 +39,8 @@ public class PlayerControl : MonoBehaviour
 
 
     private Vector2 movement;
-    private Vector2 smoothedMovement;   
+    private Vector2 smoothedMovement;
+    //public VisualEffect vfxRenderer;
 
     private void Awake()
     {
@@ -85,6 +87,8 @@ public class PlayerControl : MonoBehaviour
                 }
             }
         }
+
+        //vfxRenderer.SetVector3("ColliderPos", transform.position);
     }
 
     private void OnMove(InputValue value)

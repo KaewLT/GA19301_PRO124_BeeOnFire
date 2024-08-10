@@ -23,7 +23,7 @@ public class PrefabUmbrella : MonoBehaviour
         }
 
         attachedUmbrella = Instantiate(umbrellaPrefab, Adam_Player.transform);
-        attachedUmbrella.transform.localPosition = new Vector3(-0.5f, 0.6f, 0);
+        attachedUmbrella.transform.localPosition = new Vector3(-0.5f, 0.8f, 0);
         underRain.SetUmbrellaState(true);
 
         if (umbrellaCoroutine != null)
@@ -40,7 +40,7 @@ public class PrefabUmbrella : MonoBehaviour
 
         float timer = 0f;
 
-        while (timer < 20f)
+        while (timer < 30f)
         {
             yield return null;
 

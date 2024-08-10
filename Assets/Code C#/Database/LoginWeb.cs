@@ -10,7 +10,7 @@ public class LoginWeb : Singleton<LoginWeb>
     [SerializeField] TextMeshProUGUI Name;
     [SerializeField] TextMeshProUGUI Time;
 
-    [SerializeField] public TextMeshProUGUI loginStatus;
+    [SerializeField] TextMeshProUGUI loginStatus;
     [SerializeField] public TextMeshProUGUI registerStatus;
 
     private static readonly string LoginURL = "https://phamduchuan.name.vn/LogIn.php";
