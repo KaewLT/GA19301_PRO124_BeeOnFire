@@ -12,11 +12,14 @@ public class BirdController : MonoBehaviour
     public float waveFrequency = 2f;
     public float maxAvoidanceForce = 10f; // Lực tránh né tối đa
     public float avoidanceSmoothTime = 0.5f; // Thời gian làm mượt
+    public float minAutoFlyInterval = 15f;
+    public float maxAutoFlyInterval = 30f;
+    private float nextAutoFlyTime;
 
     public Animator birdAnimator;
     public AudioClip birdSound;
 
-    
+
     private bool isFlying = false;
     private Rigidbody2D rb;
     private Vector2 currentDirection;
@@ -32,6 +35,7 @@ public class BirdController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
 
+
         {
             if (landingAreas == null || landingAreas.Length == 0)
             {
@@ -40,11 +44,38 @@ public class BirdController : MonoBehaviour
                 return;
             }
         }
+        ResetAutoFlyTimer();
     }
 
 
     private void Update()
     {
+        if (isFlying)
+        {
+            AvoidPlayer();
+        }
+        else if (Time.time >= nextAutoFlyTime && !IsPlayerNearby())
+        {
+            FlyAway();
+        }
+    }
+
+    private bool IsPlayerNearby()
+    {
+        Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, avoidanceDistance);
+        foreach (Collider2D obj in nearbyObjects)
+        {
+            if (obj.CompareTag("Player"))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void ResetAutoFlyTimer()
+    {
+        nextAutoFlyTime = Time.time + Random.Range(minAutoFlyInterval, maxAutoFlyInterval);
         if (isFlying)
         {
             AvoidPlayer();
@@ -70,15 +101,16 @@ public class BirdController : MonoBehaviour
 
     private void PlayBirdSound()
     {
-        
+
         {
             audioSource.PlayOneShot(birdSound);
-           
+
         }
     }
 
     private void FlyAway()
     {
+        ResetAutoFlyTimer();
         isFlying = true;
         Vector3 randomPosition = GetRandomLandingPosition();
         StartCoroutine(FlyToPosition(randomPosition));
