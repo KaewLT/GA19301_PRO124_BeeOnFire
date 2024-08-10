@@ -32,7 +32,7 @@ public class BullyController : MonoBehaviour
     [SerializeField] private float avoidanceRadius = 1f;
 
     [Header("Player")]
-    [SerializeField] private Transform player;
+    [SerializeField] private GameObject player;
 
     [Header("BullyBehaviour")]
     [Header("BullySpeed")]
@@ -84,6 +84,7 @@ public class BullyController : MonoBehaviour
 
     private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         seeker = GetComponent<Seeker>();
         aiPath = GetComponent<AIPath>();
         animator = GetComponent<Animator>();
@@ -191,7 +192,7 @@ public class BullyController : MonoBehaviour
 
     private bool CanSeePlayer()
     {
-        Vector2 directionToPlayer = (Vector2)player.position - (Vector2)transform.position;
+        Vector2 directionToPlayer = (Vector2)player.transform.position - (Vector2)transform.position;
         float distanceToPlayer = directionToPlayer.magnitude;
 
         // Kiểm tra nếu người chơi ở trong khoảng cách hợp lệ
@@ -205,7 +206,7 @@ public class BullyController : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, distanceToPlayer, WhatIsObstacles);
         if (hit.collider == null || hit.collider.CompareTag("Player"))
         {
-            lastKnownPlayerPosition = player.position;
+            lastKnownPlayerPosition = player.transform.position;
             timeSinceLastSeenPlayer = 0f;
             return true;
         }
@@ -229,8 +230,8 @@ public class BullyController : MonoBehaviour
 
     private Vector2 PredictPlayerPosition()
     {
-        Vector2 playerVelocity = (Vector2)player.position - lastKnownPlayerPosition;
-        Vector2 predictedPosition = (Vector2)player.position + playerVelocity * predictionTime;
+        Vector2 playerVelocity = (Vector2)player.transform.position - lastKnownPlayerPosition;
+        Vector2 predictedPosition = (Vector2)player.transform.position + playerVelocity * predictionTime;
 
         float maxPredictionDistance = maxDistance;
         if (Vector2.Distance(transform.position, predictedPosition) > maxPredictionDistance)
