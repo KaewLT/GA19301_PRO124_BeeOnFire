@@ -38,13 +38,16 @@ public class PortalRandom : MonoBehaviour
 
         // Tắt vật lý của player và phát animation "PoIn"
         playerRb.simulated = false;
-        anim.Play("PoIn");
+        anim.Play("Portal In");
 
         // Phát âm thanh khi bắt đầu teleport tại vị trí của player
         AudioSource.PlayClipAtPoint(teleportSound, playerTransform.position);
 
         // Làm mờ màn hình bằng cách gọi coroutine FadeScreen với tham số là true (làm tối màn hình)
         yield return StartCoroutine(FadeScreen(true));
+
+        // Chờ 1 giây trước khi di chuyển
+        yield return new WaitForSeconds(1f);
 
         // Chọn ngẫu nhiên một vị trí ô từ Tilemap làm điểm đến
         Vector3Int randomTilePosition = GetRandomTilePosition();
@@ -59,8 +62,8 @@ public class PortalRandom : MonoBehaviour
             Debug.LogError("Không có điểm đến nào được định nghĩa trên Tilemap!");
         }
 
-        // Phát animation "PoOut" để kết thúc quá trình teleport
-        anim.Play("PoOut");
+        // Phát animation "Portal Out" để kết thúc quá trình teleport
+        anim.Play("Portal Out");
 
         // Làm sáng màn hình bằng cách gọi coroutine FadeScreen với tham số là false (làm sáng màn hình)
         yield return StartCoroutine(FadeScreen(false));
@@ -73,6 +76,7 @@ public class PortalRandom : MonoBehaviour
 
         isTeleporting = false; // Đánh dấu kết thúc quá trình teleport
     }
+
 
     // Coroutine để làm mờ hoặc làm sáng màn hình
     IEnumerator FadeScreen(bool darken)
