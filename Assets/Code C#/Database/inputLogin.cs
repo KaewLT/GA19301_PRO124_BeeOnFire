@@ -34,17 +34,32 @@ public class inputLogin : MonoBehaviour
 
     public void LogIn()
     {
-        LoginWeb.Instance.login();
+        if(Value.Instance.GetUser() != "" && Value.Instance.GetPasword() != "")
+        {
+            LoginWeb.Instance.login();
+
+        }else
+        {
+            LoginWeb.Instance.loginStatus.text = "Tài khoản và mật khẩu không đươc bỏ trống!";
+
+        }
     }
     public void RegisterUser()
     {
-        if (Value.Instance.GetPasword() == Value.Instance.GetPassword2())
+        if(Value.Instance.GetUser() != "" && Value.Instance.GetPasword() != "" && Value.Instance.GetPassword2() != "")
         {
-            LoginWeb.Instance.registerUser();
-        }
-        else
+            if (Value.Instance.GetPasword() == Value.Instance.GetPassword2())
+            {
+                LoginWeb.Instance.registerUser();
+            }
+            else
+            {
+                LoginWeb.Instance.registerStatus.text = "Mật khẩu không trùng khớp";
+            }
+        }else
         {
-            LoginWeb.Instance.registerStatus.text = "Mật khẩu không trùng khớp";
+            LoginWeb.Instance.registerStatus.text = "Tài khoản và mật khẩu không đươc bỏ trống!";
+
         }
     }
 
