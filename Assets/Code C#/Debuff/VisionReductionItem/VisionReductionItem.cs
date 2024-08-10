@@ -3,8 +3,8 @@ using UnityEngine.Rendering.Universal;
 
 public class VisionReductionItem : MonoBehaviour
 {
-    public float reducedInnerRadius = 0.5f;    // Giá trị inner radius muốn giảm xuống
-    public float reducedOuterRadius = 1f;      // Giá trị outer radius muốn giảm xuống
+    public float reducedInnerRadius = 1;    // Giá trị inner radius muốn giảm xuống
+    public float reducedOuterRadius = 10f;      // Giá trị outer radius muốn giảm xuống
     public Material listMaterial;               // Material mới với Sprite-Lit-Default shader
     private bool isTriggered = false;
 

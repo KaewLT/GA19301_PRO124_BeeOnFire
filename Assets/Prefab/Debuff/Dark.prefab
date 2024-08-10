@@ -143,6 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae13589133f3f5f45b2b475f80572106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reducedInnerRadius: 0.5
-  reducedOuterRadius: 1
+  reducedInnerRadius: 1
+  reducedOuterRadius: 10
   listMaterial: {fileID: 2100000, guid: 5cdd3df0d689d29478d38219ee2faf1e, type: 2}
