@@ -450,7 +450,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3
+  m_Intensity: 2.338934
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 3986832c0000000085d7549a7d00df2ad37e038df167a7fd998e8390b7ac0fce1dbc4de613b68c648947a607db64cab60d5c452c1b2d7c1f3d23042f83eae26a1b416d41
@@ -531,6 +531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGoodBook: 1
+  light2D: {fileID: 0}
 --- !u!1 &6818275391112874690
 GameObject:
   m_ObjectHideFlags: 0
