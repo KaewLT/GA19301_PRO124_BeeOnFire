@@ -9,7 +9,7 @@ public class LevelExit : MonoBehaviour
     [SerializeField] public PlayerHealth HocThuc;
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (!other.gameObject.CompareTag("Player")) return;
 
         if (other.gameObject.CompareTag("Player") && HocThuc.currentHealth >= 70)
         {
