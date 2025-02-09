@@ -5,7 +5,6 @@ using UnityEngine.Networking;
 
 public class LoginWeb : Singleton<LoginWeb>
 {
-    // Start is called before the first frame update
     [SerializeField] TextMeshProUGUI Rank;
     [SerializeField] TextMeshProUGUI Name;
     [SerializeField] TextMeshProUGUI Time;
@@ -16,7 +15,6 @@ public class LoginWeb : Singleton<LoginWeb>
     private static readonly string LoginURL = "https://phamduchuan.name.vn/LogIn.php";
     private static readonly string RegisterURL = "https://phamduchuan.name.vn/RegisterUser.php";
     private static readonly string rankURL = "https://phamduchuan.name.vn/rank.php";
-    private static readonly string GetItemValueURL = "https://phamduchuan.name.vn/GetValueItems.php";
 
     [SerializeField] GamePlay gameplayData;
     public GameObject[] rows;

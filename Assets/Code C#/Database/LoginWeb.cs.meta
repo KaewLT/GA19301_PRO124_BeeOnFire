@@ -3,7 +3,13 @@ guid: 5671082e91c5ee94a9c84d34dfc04af5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Rank: {instanceID: 0}
+  - Name: {instanceID: 0}
+  - Time: {instanceID: 0}
+  - loginStatus: {instanceID: 0}
+  - registerStatus: {instanceID: 0}
+  - gameplayData: {fileID: 11400000, guid: 3e797fae6fc9d5b439f3af7f5c975e76, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

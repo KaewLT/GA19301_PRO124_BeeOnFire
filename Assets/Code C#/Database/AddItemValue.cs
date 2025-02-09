@@ -45,9 +45,9 @@ public class AddItemValue : MonoBehaviour
 #if UNITY_EDITOR
         // Tạo thư mục lưu trữ các ScriptableObject nếu chưa tồn tại
         string folderPath = "Assets/ItemsData";
-        if (!System.IO.Directory.Exists(folderPath))
+        if (Directory.Exists(folderPath))
         {
-            System.IO.Directory.CreateDirectory(folderPath);
+            Directory.CreateDirectory(folderPath);
         }
 
         foreach (var item in itemValueList.Itemp)
